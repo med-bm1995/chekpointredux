@@ -1,5 +1,5 @@
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from './action'
-import { todos } from './store'
+import { todos } from './states'
 export let reducer = (state = todos, action) => {
     let newTodos;
     switch (action.type) {
