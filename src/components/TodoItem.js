@@ -4,7 +4,16 @@ import { updateTodo, deleteTodo } from '../redux/action'
 function TodoItem({ todo }) {
     let dispatch = useDispatch()
     const [editable, setEditable] = useState(false)
+    console.log(editable)
     const [name, setName] = useState(todo.name)
+    const handeltest = () => {
+        setName(todo.name)
+        setEditable(!editable)
+        dispatch(updateTodo({
+            ...todo,
+            name: name
+        }))
+    }
     return (
         <div>
             <div className="row mx-2 align-items-center">
@@ -12,7 +21,7 @@ function TodoItem({ todo }) {
                 <div className='col'>
                     {editable ? <input type="text" className="form-controls"
                         value={name}
-                        onchange={
+                        onChange={
                             (e) => setName(e.target.value)
                         }
                     />
@@ -20,22 +29,11 @@ function TodoItem({ todo }) {
 
                 </div>
                 <button
-                    onclick={() => {
-                        dispatch(updateTodo({
-                            ...todo,
-                            name: name
-                        }))
-                        if (editable) {
-                            setName = (todo.name)
-                        }
-
-                        setEditable = (!editable)
-
-                    }}
+                    onClick={handeltest}
                     className="btn btn-primary mx-2">
                     {editable ? "update" : "edit"}</button>
                 <button
-                    onclick={() => dispatch(deleteTodo(todo.id))}
+                    onClick={() => dispatch(deleteTodo(todo.id))}
                     className="btn btn-danger mx-2">Delete</button>
             </div>
         </div>

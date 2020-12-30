@@ -1,5 +1,23 @@
 import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from './action'
-import { todos } from './states'
+
+const todos = [
+    {
+        id: 1,
+        name: "one",
+    },
+    {
+        id: 2,
+        name: "tow",
+    },
+    {
+        id: 3,
+        name: "three",
+    }
+]
+
+
+
+
 export let reducer = (state = todos, action) => {
     let newTodos;
     switch (action.type) {
@@ -30,11 +48,10 @@ export let reducer = (state = todos, action) => {
                 return newTodos
             }
 
-
+        default: return state;
     }
 
 
-    return state;
 
 
 }
